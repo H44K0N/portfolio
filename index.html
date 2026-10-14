@@ -1,42 +1,96 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haakon Meyer Tischbein</title>
-    <link rel="icon" type="image/x-icon" href="/static/favicon.svg">
-    <link rel="stylesheet" href="/style.css" />
+    <meta name="description" content="Applied Computer Technology student at OsloMet, interested in DevOps, platform engineering and self-hosting.">
+    <meta name="theme-color" content="#0d0c0b">
+    <link rel="icon" type="image/svg+xml" href="/static/favicon.svg?v=2">
+    <link rel="preload" href="/static/fonts/Libron-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,1;1,300..800,1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css?v=2" />
 </head>
 <body>
-    <header>
-        <p>Skip to:</p>
+    <header class="top">
+        <a href="/" class="mark">tischbein.dev</a>
         <nav>
-            <a href="tischbein.dev">home</a>
-            <a href="tischbein.dev">projects</a>
-            <a href="tischbein.dev">github</a>
-            <a href="tischbein.dev">contact</a>
+            <a href="#projects">projects</a>
+            <a href="#skills">skills</a>
+            <a href="#contact">contact</a>
         </nav>
     </header>
 
-    <hero class="container">
-        <div class="card">
-        <h1>Haakon</h1>
-        <p class="bio">Applied Computer Technology student at OsloMet. Interested in DevOps and platform engineering, self-hosting, IaC, and getting things to run reliably.</p>
-            <div class="skill-icons">
-        <span title="Linux"><img src="https://skillicons.dev/icons?i=linux" alt="Linux"/></span>
-        <span title="Bash"><img src="https://skillicons.dev/icons?i=bash" alt="Bash"/></span>
-        <span title="Nginx"><img src="https://skillicons.dev/icons?i=nginx" alt="Nginx"/></span>
-        <span title="Git"><img src="https://skillicons.dev/icons?i=git" alt="Git"/></span>
-        <span title="Java"><img src="https://skillicons.dev/icons?i=java" alt="Java"/></span>
-        <span title="Spring"><img src="https://skillicons.dev/icons?i=spring" alt="Spring"/></span>
-        <span title="SQL"><img src="https://skillicons.dev/icons?i=mysql" alt="SQL"/></span>
-        <span title="HTML"><img src="https://skillicons.dev/icons?i=html" alt="HTML"/></span>
-        <span title="CSS"><img src="https://skillicons.dev/icons?i=css" alt="CSS"/></span>
+    <main>
+        <section class="intro">
+            <p class="meta">Oslo, Norway</p>
+            <h1>Haakon Meyer Tischbein</h1>
+            <p class="lede main">I study Applied Computer Technology at OsloMet. Linux is my daily driver, and I like running my own infrastructure.</p>
+            <p class="lede">I'm interested in DevOps and platform engineering.</p>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="grid">
+                <a class="card" href="https://github.com/H44K0N/sjekka">
+                    <h3>sjekka <span class="arrow">↗</span></h3>
+                    <p>Turns photos of grocery receipts into a searchable price database. Gemini reads the receipt, a job queue in SQLite handles retries and restarts.</p>
+                    <ul class="tags"><li>fastapi</li><li>sqlite</li><li>gemini</li></ul>
+                </a>
+                <a class="card" href="https://github.com/H44K0N/dotfiles">
+                    <h3>dotfiles <span class="arrow">↗</span></h3>
+                    <p>One Hyprland setup across two machines. Tracks installed packages and routes app audio into Discord screen shares.</p>
+                    <ul class="tags"><li>hyprland</li><li>bash</li><li>pipewire</li></ul>
+                </a>
+                <a class="card" href="https://github.com/H44K0N/pi">
+                    <h3>pi <span class="arrow">↗</span></h3>
+                    <p>A Raspberry Pi 4 set up headless with cloud-init. Docker services, a stats API, and a watchdog that reboots if the tunnel stays down.</p>
+                    <ul class="tags"><li>docker</li><li>cloud-init</li><li>cloudflare</li></ul>
+                </a>
+                <a class="card" href="https://github.com/H44K0N/kolllektiv">
+                    <h3>kolllektiv <span class="arrow">↗</span></h3>
+                    <p>Chore rotation for a shared flat. Ran on a tablet taped to the fridge.</p>
+                    <ul class="tags"><li>javascript</li><li>localstorage</li></ul>
+                </a>
             </div>
-        </div>
-    </hero> 
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <dl class="setup">
+                <div><dt>Infrastructure</dt><dd>Linux, Docker, Nginx, systemd, Cloudflare Tunnel, cloud&#8209;init</dd></div>
+                <div><dt>Languages</dt><dd>Java, C#, Python, JavaScript, Bash, SQL</dd></div>
+                <div><dt>Frameworks</dt><dd>Spring Boot, ASP.NET Core, FastAPI, React</dd></div>
+                <div><dt>Selected coursework</dt><dd>Data Networks and Cloud Services, Operating Systems, Software Testing, Algorithms and Data Structures, Information Security (in progress)</dd></div>
+            </dl>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <ul class="links">
+                <li><button type="button" class="reveal" data-a="haa" data-b="meti" data-c="hotmail.com">Show email</button></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <span>© 2026 Haakon Meyer Tischbein</span>
+        <span>Set in Libron</span>
+    </footer>
+
+    <script>
+        // the address is only assembled on click, so it never appears in the page source
+        document.querySelector(".reveal").addEventListener("click", (e) => {
+            const { a, b, c } = e.currentTarget.dataset;
+            const address = a + b + "@" + c;
+            const link = document.createElement("a");
+            link.href = "mailto:" + address;
+            link.textContent = address;
+            e.currentTarget.replaceWith(link);
+            link.focus();
+        });
+    </script>
 </body>
 </html>
