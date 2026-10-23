@@ -126,6 +126,87 @@ a.card:hover {
   color: var(--soft);
 }
 
+/* featured project: a live preview, a status dot and two links */
+.featured { grid-column: 1 / -1; padding: 12px 12px 20px; }
+.featured > h3, .featured > p, .featured > .foot { margin-left: 10px; margin-right: 10px; }
+.featured:hover { border-color: rgba(201, 180, 143, 0.35); }
+
+.preview {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--ink);
+}
+.chrome {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--soft);
+  border-bottom: 1px solid var(--line);
+  transition: color 200ms;
+}
+.chrome .arrow { margin-left: auto; }
+.preview:hover .chrome { color: var(--text); }
+.preview video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  opacity: 0.9;
+  transition: opacity 300ms;
+}
+.preview:hover video { opacity: 1; }
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2.4s ease-out infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(201, 180, 143, 0.55); }
+  70%, 100% { box-shadow: 0 0 0 7px rgba(201, 180, 143, 0); }
+}
+.live {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  font-family: var(--mono);
+  font-size: 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  transition: border-color 200ms, background 200ms, color 200ms;
+}
+.pill:hover { border-color: rgba(201, 180, 143, 0.35); background: rgba(236, 230, 220, 0.04); }
+.pill.primary { color: var(--ink); background: var(--text); border-color: var(--text); }
+.pill.primary .arrow { color: var(--ink); }
+.pill.primary:hover { background: var(--accent); border-color: var(--accent); }
+
 .arrow {
   font-family: var(--mono);
   font-weight: 400;
