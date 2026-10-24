@@ -18,7 +18,6 @@
   --accent: #c9b48f;                    /* champagne, used sparingly */
   --soft:   #8e877c;                    /* taupe, secondary text */
   --text:   #ece6dc;                    /* ivory body text */
-  --mono:   "Google Sans Code", ui-monospace, monospace;
   color-scheme: dark;
 }
 
@@ -39,6 +38,7 @@ body {
 ::selection { background: var(--accent); color: var(--ink); }
 
 a { color: inherit; text-decoration: none; }
+button, input { font-family: inherit; }
 
 .top, main, footer {
   max-width: 760px;
@@ -47,9 +47,8 @@ a { color: inherit; text-decoration: none; }
   padding-right: 24px;
 }
 
-/* header + footer share the small mono voice */
+/* header + footer share the small voice */
 .top, footer, .meta, h2, .tags, dt {
-  font-family: var(--mono);
   font-size: 13px;
   color: var(--soft);
 }
@@ -144,8 +143,7 @@ a.card:hover {
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
-  font-family: var(--mono);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--soft);
   border-bottom: 1px solid var(--line);
   transition: color 200ms;
@@ -177,8 +175,7 @@ a.card:hover {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  font-family: var(--mono);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
   color: var(--accent);
 }
@@ -196,7 +193,6 @@ a.card:hover {
   align-items: center;
   gap: 8px;
   padding: 6px 14px;
-  font-family: var(--mono);
   font-size: 13px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -208,7 +204,6 @@ a.card:hover {
 .pill.primary:hover { background: var(--accent); border-color: var(--accent); }
 
 .arrow {
-  font-family: var(--mono);
   font-weight: 400;
   color: var(--soft);
   transition: transform 200ms, color 200ms;
@@ -225,7 +220,7 @@ a:hover .arrow { color: var(--accent); transform: translate(2px, -2px); }
 }
 .tags li {
   padding: 2px 8px;
-  font-size: 12px;
+  font-size: 13px;
   border: 1px solid var(--line);
   border-radius: 6px;
 }
