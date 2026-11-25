@@ -4,108 +4,219 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haakon Meyer Tischbein</title>
-    <meta name="description" content="Applied Computer Technology student at OsloMet, interested in DevOps, platform engineering and self-hosting.">
-    <meta name="theme-color" content="#0d0c0b">
-    <link rel="icon" type="image/svg+xml" href="/static/favicon.svg?v=2">
-    <link rel="preload" href="/static/fonts/Libron-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/style.css?v=4" />
+    <meta name="description" content="Final-year Applied Computer Technology student at OsloMet. Four self-hosted apps in production, built with AI and run on my own server. Open to graduate roles from summer 2027.">
+    <meta name="theme-color" content="#f3efe7">
+    <link rel="icon" type="image/svg+xml" href="static/favicon.svg?v=3">
+    <link rel="preload" href="static/fonts/Libron-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="style.css?v=8">
+    <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
     <header class="top">
-        <a href="/" class="mark">tischbein.dev</a>
-        <nav>
-            <a href="#projects">projects</a>
-            <a href="#skills">skills</a>
-            <a href="#contact">contact</a>
-        </nav>
+        <a href="./" class="mark">Haakon Meyer Tischbein <span>tischbein.dev</span></a>
+        <a class="hire" href="#about" data-goto="about">Open to graduate roles · summer 2027</a>
     </header>
 
-    <main>
-        <section class="intro">
-            <p class="meta">Oslo, Norway</p>
-            <h1>Haakon Meyer Tischbein</h1>
-            <p class="lede main">I study Applied Computer Technology at OsloMet. Linux is my daily driver, and I like running my own infrastructure.</p>
-            <p class="lede">I'm interested in DevOps and platform engineering.</p>
+    <nav class="tabs" aria-label="Projects and pages">
+        <a href="#sjekka" data-panel="sjekka">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M9 4h14v24l-3.5-2.5L16 28l-3.5-2.5L9 28z"/><path d="M13 10h6M13 14.5h6M13 19h3"/></svg>
+            <span>sjekka</span>
+        </a>
+        <a href="#stud" data-panel="stud">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 5h14a3 3 0 0 1 3 3v19H11a3 3 0 0 1-3-3z"/><path d="M8 24a3 3 0 0 1 3-3h14M13 10h7"/></svg>
+            <span>stud</span>
+        </a>
+        <a href="#alfred" data-panel="alfred">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M13 13.5 4 9v14l9-4.5M19 13.5 28 9v14l-9-4.5"/><rect x="13" y="12" width="6" height="8" rx="2"/></svg>
+            <span>alfred</span>
+        </a>
+        <a href="#pulse" data-panel="pulse">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 27S5 20.5 5 12.5A6 6 0 0 1 16 9.200a6 6 0 0 1 11 3.300C27 20.500 16 27 16 27z"/><path d="M9 16h4l2-4 3 7 2-3h3"/></svg>
+            <span>pulse</span>
+        </a>
+        <i class="sep" aria-hidden="true"></i>
+        <a href="#ai" data-panel="ai">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path stroke-width="2.2" d="M16.0 13.0L16.0 5.0M17.6 13.5L20.6 8.8M18.7 14.8L25.6 11.6M19.0 16.4L24.9 17.3M18.3 18.0L24.3 23.2M16.8 18.9L18.3 23.7M15.2 18.9L13.2 25.6M13.7 18.0L8.8 22.2M13.0 16.4L5.1 17.6M13.3 14.8L8.3 12.5M14.4 13.5L10.6 7.6"/></svg>
+            <span>how I build with AI</span>
+        </a>
+        <a href="#about" data-panel="about">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M9 6v20M23 6v20M9 16h14"/></svg>
+            <span>about me</span>
+        </a>
+    </nav>
+
+    <main class="stage">
+        <div class="object">
+            <canvas id="object" aria-hidden="true"></canvas>
+        </div>
+
+        <div class="panels">
+
+        <section id="sjekka" class="panel">
+            <p class="kicker"><span class="live">live</span> Web app · public</p>
+            <h2>sjekka</h2>
+            <p class="lede">Photograph a grocery receipt and it lands in a shared price database, so you can see what things really cost and where.</p>
+            <a class="browser" href="https://sjekka.tischbein.dev" aria-label="Open the live sjekka demo">
+                <span class="chrome">sjekka.tischbein.dev <span class="arrow">↗</span></span>
+                <video muted loop playsinline preload="none" poster="static/sjekka/poster.jpg?v=2" aria-hidden="true">
+                    <source data-src="static/sjekka/preview.webm?v=2" type="video/webm">
+                    <source data-src="static/sjekka/preview.mp4?v=2" type="video/mp4">
+                </video>
+            </a>
+            <ol class="flow" style="--n:4" aria-label="How a receipt is processed">
+                <li><b>Photo</b><span>of a receipt</span></li><li><b>Read</b><span>Gemini, against a strict schema</span></li><li><b>Queue</b><span>retries, duplicates, unit prices</span></li><li><b>Prices</b><span>one shared database</span></li>
+            </ol>
+            <ul class="points">
+                <li>The model's answer has to fit a fixed schema, so a bad read is rejected and retried, never stored.</li>
+                <li>Deployed by CI to my own server, with a health check and automatic rollback.</li>
+            </ul>
+            <ul class="tags"><li>FastAPI</li><li>SQLite</li><li>Gemini</li><li>Docker</li><li>GitHub Actions</li></ul>
+            <div class="actions">
+                <a class="pill primary" href="https://sjekka.tischbein.dev">Open live demo <span class="arrow">↗</span></a>
+                <a class="pill" href="https://github.com/H44K0N/sjekka">Source <span class="arrow">↗</span></a>
+            </div>
+            <p class="built">Built with Claude Code. <a href="#ai" data-goto="ai">How I work with it</a></p>
         </section>
 
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="grid">
-                <article class="card featured">
-                    <a class="preview" href="https://sjekka.tischbein.dev" aria-label="Open the live sjekka demo">
-                        <span class="chrome"><span class="dot" aria-hidden="true"></span>sjekka.tischbein.dev<span class="arrow">↗</span></span>
-                        <video autoplay muted loop playsinline preload="metadata" poster="/static/sjekka/poster.jpg?v=2" aria-hidden="true">
-                            <source src="/static/sjekka/preview.webm?v=2" type="video/webm">
-                            <source src="/static/sjekka/preview.mp4?v=2" type="video/mp4">
-                        </video>
-                    </a>
-                    <h3>sjekka <span class="live"><span class="dot" aria-hidden="true"></span>live</span></h3>
-                    <p>Turns photos of grocery receipts into a shared price database. Gemini reads each receipt against a strict schema, and a job queue in SQLite handles retries, duplicates and unit prices. Deployed by CI to this server.</p>
-                    <div class="foot">
-                        <ul class="tags"><li>fastapi</li><li>sqlite</li><li>gemini</li><li>docker</li></ul>
-                        <div class="actions">
-                            <a class="pill primary" href="https://sjekka.tischbein.dev">Open live demo <span class="arrow">↗</span></a>
-                            <a class="pill" href="https://github.com/H44K0N/sjekka">Source <span class="arrow">↗</span></a>
-                        </div>
-                    </div>
-                </article>
-                <a class="card" href="https://github.com/H44K0N/dotfiles">
-                    <h3>dotfiles <span class="arrow">↗</span></h3>
-                    <p>One Hyprland setup across two machines. Tracks installed packages and routes app audio into Discord screen shares.</p>
-                    <ul class="tags"><li>hyprland</li><li>bash</li><li>pipewire</li></ul>
-                </a>
-                <a class="card" href="https://github.com/H44K0N/pi">
-                    <h3>pi <span class="arrow">↗</span></h3>
-                    <p>A Raspberry Pi 4 set up headless with cloud-init. Docker services, a stats API, and a watchdog that reboots if the tunnel stays down.</p>
-                    <ul class="tags"><li>docker</li><li>cloud-init</li><li>cloudflare</li></ul>
-                </a>
-                <a class="card" href="https://github.com/H44K0N/kolllektiv">
-                    <h3>kolllektiv <span class="arrow">↗</span></h3>
-                    <p>Chore rotation for a shared flat. Ran on a tablet taped to the fridge.</p>
-                    <ul class="tags"><li>javascript</li><li>localstorage</li></ul>
-                </a>
+        <section id="stud" class="panel">
+            <p class="kicker"><span class="live">in daily use</span> Web + Android · private</p>
+            <h2>stud</h2>
+            <p class="lede">My exam preparation in one place: a mirror of my course material, a daily study session, and short audiobook chapters with a quiz after each one.</p>
+            <div class="shots">
+                <figure><img src="static/shots/stud-today.webp" width="480" height="1068" loading="lazy" alt="stud's Today screen with the day's study session"><figcaption>Today's session</figcaption></figure>
+                <figure><img src="static/shots/stud-chapter.webp" width="480" height="1068" loading="lazy" alt="An audiobook chapter playing, with its learning goals"><figcaption>A five-minute chapter</figcaption></figure>
+                <figure><img src="static/shots/stud-quiz.webp" width="480" height="1068" loading="lazy" alt="A three-question quiz after the chapter"><figcaption>Quiz on what you heard</figcaption></figure>
+            </div>
+            <p class="note">Screens show made-up demo courses. The real app sits behind Cloudflare Access.</p>
+            <ol class="flow" style="--n:5" aria-label="How an audiobook chapter is made">
+                <li><b>Topic</b><span>from the exam list</span></li><li><b>Script</b><span>Claude writes it for the ear</span></li><li><b>Check</b><span>automatic, rewrite on fail</span></li><li><b>Voice</b><span>rendered on my server</span></li><li><b>Phone</b><span>offline, then a quiz</span></li>
+            </ol>
+            <ul class="points">
+                <li>Chapters are only written about ten ahead of where I am, and a monthly budget cap stops the spend.</li>
+                <li>Course material is also served to Claude through a read-only MCP server, so I can ask about my own syllabus.</li>
+                <li>The Android app works offline and queues what I do until there is a connection.</li>
+            </ul>
+            <ul class="tags"><li>FastAPI</li><li>SQLAlchemy</li><li>Claude API</li><li>MCP</li><li>Kotlin</li><li>Media3</li><li>Cloudflare Access</li></ul>
+            <p class="built">Built with Claude Code. <a href="#ai" data-goto="ai">How I work with it</a></p>
+        </section>
+
+        <section id="alfred" class="panel">
+            <p class="kicker"><span class="live">in daily use</span> Android + backend · private</p>
+            <h2>alfred</h2>
+            <p class="lede">A personal boss. Alfred plans my week around exams, work and training, taps me on the shoulder when a block starts, and keeps my news feed locked until the day's work is done.</p>
+            <div class="shots">
+                <figure><img src="static/shots/alfred-today.webp" width="480" height="1068" loading="lazy" alt="Alfred's Today screen with a study block in progress"><figcaption>Today</figcaption></figure>
+                <figure><img src="static/shots/alfred-week.webp" width="480" height="1068" loading="lazy" alt="The planned week as a calendar"><figcaption>The planned week</figcaption></figure>
+                <figure><img src="static/shots/alfred-proof.webp" width="480" height="1068" loading="lazy" alt="Three quick questions to prove a study block was done"><figcaption>Proof before a block counts</figcaption></figure>
+            </div>
+            <p class="note">Screens are rendered from demo data.</p>
+            <ol class="flow" style="--n:4" aria-label="How Alfred is put together">
+                <li><b>State</b><span>one database</span></li><li><b>Rules</b><span>planning as plain code</span></li><li><b>LLM jobs</b><span>intake, briefing, quizzes</span></li><li><b>Phone</b><span>cached plan, its own alarms</span></li>
+            </ol>
+            <ul class="points">
+                <li>Everything works with the language model switched off. The model improves the wording and reads free text; it never owns the plan.</li>
+                <li>The phone answers instantly, online or not: actions are queued with idempotency keys and replayed in order.</li>
+                <li>Reads from my other apps (study deadlines from stud, training from pulse) so I organise almost nothing by hand.</li>
+            </ul>
+            <ul class="tags"><li>Kotlin</li><li>Jetpack Compose</li><li>Room</li><li>FastAPI</li><li>Claude API</li><li>Docker</li></ul>
+            <p class="built">Built with Claude Code. <a href="#ai" data-goto="ai">How I work with it</a></p>
+        </section>
+
+        <section id="pulse" class="panel">
+            <p class="kicker"><span class="live">in use</span> Android + backend · open source</p>
+            <h2>pulse</h2>
+            <p class="lede">An interval coach for a Polar H10 chest strap. It reads my heart rate live, tells me by voice when I drift out of the target zone, and shows whether I am getting fitter.</p>
+            <div class="shots">
+                <figure><img src="static/shots/pulse-live.webp" width="480" height="1068" loading="lazy" alt="Live heart rate of 181 inside the target zone during an interval"><figcaption>Live, in zone</figcaption></figure>
+                <figure><img src="static/shots/pulse-summary.webp" width="480" height="1068" loading="lazy" alt="Summary of a 4x4 interval session with a heart-rate chart"><figcaption>After a 4×4 session</figcaption></figure>
+                <figure><img src="static/shots/pulse-progress.webp" width="480" height="1068" loading="lazy" alt="Progress over the last weeks: sessions, time in zone, recovery trend"><figcaption>Progress over weeks</figcaption></figure>
+            </div>
+            <p class="note">Screens are rendered from simulated sessions.</p>
+            <ol class="flow" style="--n:4" aria-label="How a session flows through pulse">
+                <li><b>Strap</b><span>Polar H10 over Bluetooth</span></li><li><b>Engine</b><span>pure Kotlin, tested on simulated runs</span></li><li><b>Coach</b><span>voice cues and live screen</span></li><li><b>Sync</b><span>to my server</span></li>
+            </ol>
+            <ul class="points">
+                <li>The coaching logic is separate from Android, so whole workouts can be replayed in tests without a strap or a phone.</li>
+                <li>Handles the dull real-world cases: sensor drop-outs, pauses, a session that must survive the screen being off.</li>
+            </ul>
+            <ul class="tags"><li>Kotlin</li><li>Jetpack Compose</li><li>Polar BLE SDK</li><li>Room</li><li>FastAPI</li></ul>
+            <div class="actions">
+                <a class="pill" href="https://github.com/H44K0N/pulse">Source <span class="arrow">↗</span></a>
+            </div>
+            <p class="built">Built with Claude Code. <a href="#ai" data-goto="ai">How I work with it</a></p>
+        </section>
+
+        <section id="ai" class="panel">
+            <p class="kicker">Method</p>
+            <h2>How I build with AI</h2>
+            <p class="lede">Most of the code in these apps was written by Claude. What to build, the constraints, the review standard and the running of it in production are mine. I think being open about that is more useful than pretending otherwise.</p>
+            <ol class="steps">
+                <li><b>Brief before code.</b> Every project starts as a written brief. The model asks me questions first; my answers are recorded as decisions.</li>
+                <li><b>Contracts between parts.</b> App and server agree on a documented API, so separate agents can build both sides in parallel.</li>
+                <li><b>Isolated agents, real review.</b> Each agent works in its own clone on a branch. Nothing merges before tests pass in a fresh clone and the risky code has been read.</li>
+                <li><b>Deterministic core.</b> Rules live in ordinary code with tests. Language models get narrow, checked jobs, and the apps keep working without them.</li>
+                <li><b>Production like it matters.</b> CI deploys with health checks and rollback, locked-down containers, backups, spending caps.</li>
+            </ol>
+            <div class="actions">
+                <a class="pill primary" href="ai/">Read the full write-up <span class="arrow">→</span></a>
             </div>
         </section>
 
-        <section id="skills">
-            <h2>Skills</h2>
-            <dl class="setup">
-                <div><dt>Infrastructure</dt><dd>Linux, Docker, Nginx, systemd, Cloudflare Tunnel, cloud&#8209;init</dd></div>
-                <div><dt>Languages</dt><dd>Java, C#, Python, JavaScript, Bash, SQL</dd></div>
-                <div><dt>Frameworks</dt><dd>Spring Boot, ASP.NET Core, FastAPI, React</dd></div>
-                <div><dt>Selected coursework</dt><dd>Data Networks and Cloud Services, Operating Systems, Software Testing, Algorithms and Data Structures, Computer Security (in progress)</dd></div>
-            </dl>
-        </section>
+        <section id="about" class="panel">
+            <p class="kicker">Oslo, Norway · graduating summer 2027</p>
+            <h1>Haakon Meyer Tischbein</h1>
+            <p class="lede">I am in the final year of a bachelor's in Applied Computer Technology at OsloMet, and I am looking for a full-time role in DevOps, platform or backend engineering from summer 2027.</p>
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <ul class="links">
-                <li><button type="button" class="reveal" data-a="haa" data-b="meti" data-c="hotmail.com">Show email</button></li>
+            <ul class="why">
+                <li><b>I run things in production.</b> Four of my own apps live on a server I am responsible for: CI deploys with health checks and rollback, locked-down containers behind a Cloudflare tunnel, backups and intrusion detection.</li>
+                <li><b>I finish things and then use them.</b> <a href="#stud" data-goto="stud">stud</a> got me through this autumn's exams, <a href="#alfred" data-goto="alfred">alfred</a> plans my days, <a href="#pulse" data-goto="pulse">pulse</a> coaches my runs, and <a href="#sjekka" data-goto="sjekka">sjekka</a> is open to anyone.</li>
+                <li><b>I get a lot out of AI without handing it the wheel.</b> I write the brief, set the rules and review what comes back. <a href="#ai" data-goto="ai">Here is how.</a></li>
+                <li><b>I am used to responsibility.</b> Elected representative for 140 conscripts in the Army Medical Battalion, and night shifts in a dementia unit, where staying calm is the job.</li>
+            </ul>
+
+            <div class="actions">
+                <button type="button" class="pill primary reveal" data-a="haa" data-b="meti" data-c="hotmail.com">Show email</button>
+                <a class="pill" href="https://github.com/H44K0N">GitHub <span class="arrow">↗</span></a>
+            </div>
+
+            <h3>Experience</h3>
+            <dl class="cv">
+                <div><dt>2026</dt><dd><b>Volunteer, IT group, Øyafestivalen.</b> Built the festival network on site: switches, antennas and a great deal of cabling.</dd></div>
+                <div><dt>2023 – now</dt><dd><b>On-call care assistant, Oslo Municipality.</b> Vinderenhjemmet nursing home, alongside my studies.</dd></div>
+                <div><dt>2023</dt><dd><b>Care assistant, Åmot Municipality.</b> Full-time in a dementia unit at Ryslingmoen, mostly night shifts.</dd></div>
+                <div><dt>2019 – 2020</dt><dd><b>Norwegian Armed Forces, Army Medical Battalion.</b> Full-time battalion representative for 140 conscripts and operations assistant at command headquarters. Promoted to Leading Private.</dd></div>
+                <div><dt>2017 – 2021</dt><dd><b>UCO Kjeller.</b> Assembling and maintaining modular buildings, full-time for six months in 2021 and in school holidays before that.</dd></div>
+            </dl>
+
+            <h3>Education</h3>
+            <dl class="cv">
+                <div><dt>2024 – 2027</dt><dd><b>BSc Applied Computer Technology, OsloMet.</b> Data Networks and Cloud Services, Operating Systems, Software Testing, Computer Security, Java programming, Interaction Design.</dd></div>
+            </dl>
+
+            <h3>Skills</h3>
+            <dl class="cv">
+                <div><dt>Infrastructure</dt><dd>Linux, Docker, Nginx, systemd, Cloudflare Tunnel and Access, GitHub Actions, cloud&#8209;init</dd></div>
+                <div><dt>Languages</dt><dd>Python, Java, Kotlin, C#, JavaScript, Bash, SQL</dd></div>
+                <div><dt>Frameworks</dt><dd>FastAPI, Spring Boot, ASP.NET Core, Jetpack Compose, React</dd></div>
+                <div><dt>Spoken</dt><dd>Norwegian, English</dd></div>
+            </dl>
+
+            <h3>Also built</h3>
+            <ul class="also">
+                <li><a href="https://github.com/H44K0N/dotfiles">dotfiles <span class="arrow">↗</span></a> One Hyprland setup across two machines, with tracked packages and app audio routed into screen shares.</li>
+                <li><a href="https://github.com/H44K0N/pi">pi <span class="arrow">↗</span></a> A headless Raspberry Pi set up with cloud-init: Docker services, a stats API and a watchdog that reboots if the tunnel stays down.</li>
+                <li><a href="https://github.com/H44K0N/kolllektiv">kolllektiv <span class="arrow">↗</span></a> Chore rotation for a shared flat. Ran on a tablet taped to the fridge.</li>
             </ul>
         </section>
+
+        </div>
     </main>
 
     <footer>
         <span>© 2026 Haakon Meyer Tischbein</span>
-        <span>Set in Libron</span>
+        <span>Hosted on my own server · set in Libron</span>
     </footer>
 
-    <script>
-        // No moving preview for people who asked for reduced motion; the poster stays
-        if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            for (const v of document.querySelectorAll("video[autoplay]")) { v.removeAttribute("autoplay"); v.pause(); }
-        }
-
-        // the address is only assembled on click, so it never appears in the page source
-        document.querySelector(".reveal").addEventListener("click", (e) => {
-            const { a, b, c } = e.currentTarget.dataset;
-            const address = a + b + "@" + c;
-            const link = document.createElement("a");
-            link.href = "mailto:" + address;
-            link.textContent = address;
-            e.currentTarget.replaceWith(link);
-            link.focus();
-        });
-    </script>
+    <script src="app.js?v=7" defer></script>
 </body>
 </html>
