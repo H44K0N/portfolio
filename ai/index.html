@@ -8,7 +8,7 @@
     <meta name="theme-color" content="#f3efe7">
     <link rel="icon" type="image/svg+xml" href="../static/favicon.svg?v=3">
     <link rel="preload" href="../static/fonts/Libron-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="../style.css?v=9">
+    <link rel="stylesheet" href="../style.css?v=10">
 </head>
 <body>
     <header class="top">
@@ -20,7 +20,7 @@
         <a class="back" href="../#ai">← Back to the projects</a>
         <h1>How I build with AI</h1>
         <p class="lede">Most of the code in <a href="../#sjekka">sjekka</a>, <a href="../#stud">stud</a>, <a href="../#alfred">alfred</a> and <a href="../#pulse">pulse</a> was written by Claude, through Claude Code. I would rather say that plainly than let anyone assume I typed it all.</p>
-        <p>What I bring is the part that decides whether AI-written software is any good: knowing what I want, setting the rules it is built under, checking the result, and running it for real. This page describes that process.</p>
+        <p>What I bring is the part that decides whether AI-written software is any good: knowing what I want, deciding how it should be put together, setting the rules it is built under, checking the result, and running it for real. This page describes that process.</p>
 
         <h2>Who does what</h2>
         <div class="split">
@@ -29,7 +29,8 @@
                 <ul>
                     <li>What gets built, and why</li>
                     <li>Requirements and hard constraints: cost, privacy, what must work offline</li>
-                    <li>Decisions when the design forks</li>
+                    <li>The shape of the architecture: what is its own app, what runs where, what talks to what</li>
+                    <li>The call whenever the design forks</li>
                     <li>The standard a change has to meet before it ships</li>
                     <li>Testing on the real phone, with the real chest strap, in real exam weeks</li>
                     <li>The server, the domain and everything that runs on them</li>
@@ -38,7 +39,7 @@
             <div class="box">
                 <h3>Claude's</h3>
                 <ul>
-                    <li>Proposing an architecture for me to question</li>
+                    <li>Working out the detailed design inside that shape, and arguing back when it disagrees</li>
                     <li>Writing the code and the tests</li>
                     <li>Reviewing other agents' work</li>
                     <li>Routine operations on the server, inside rules I have set</li>
@@ -59,6 +60,11 @@
                 <h3>Write the brief first</h3>
                 <p>Nothing starts from a one-line prompt. A project begins as a written brief: what it is for, what it must never do, what is undecided. The model has to ask me its open questions before it writes code, and my answers are recorded as decisions.</p>
                 <p class="ex">Example: for stud's audiobooks I set the rules up front. Free voices that run on my own server, about five minutes per chapter, written to be listened to, a quiz after each one.</p>
+            </div>
+            <div>
+                <h3>Decide the architecture together, and have the last word</h3>
+                <p>The model drafts a design and I push on it. The big structural choices are mine, and several of them overruled the first draft. The model fills in the detail and tells me when it thinks I am wrong; sometimes it is right.</p>
+                <p class="ex">Examples: my course material was going to be rebuilt as app screens, and I had it exposed as a read-only MCP server instead. stud and alfred are separate apps that read from each other because I did not want one large app. Alfred owns its own calendar with no outside integrations. Audiobook chapters are only written about ten ahead of where I am listening.</p>
             </div>
             <div>
                 <h3>Put a contract between the parts</h3>

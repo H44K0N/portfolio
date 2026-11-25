@@ -8,7 +8,7 @@
     <meta name="theme-color" content="#f3efe7">
     <link rel="icon" type="image/svg+xml" href="static/favicon.svg?v=3">
     <link rel="preload" href="static/fonts/Libron-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=9">
+    <link rel="stylesheet" href="style.css?v=10">
     <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -64,7 +64,7 @@
             <ul class="why">
                 <li><b>I run things in production.</b> Four of my own apps live on a server I am responsible for: CI deploys with health checks and rollback, locked-down containers behind a Cloudflare tunnel, backups and intrusion detection.</li>
                 <li><b>I finish things and then use them.</b> <a href="#stud" data-goto="stud">stud</a> got me through this autumn's exams, <a href="#alfred" data-goto="alfred">alfred</a> plans my days, <a href="#pulse" data-goto="pulse">pulse</a> coaches my runs, and <a href="#sjekka" data-goto="sjekka">sjekka</a> is open to anyone.</li>
-                <li><b>I get a lot out of AI without handing it the wheel.</b> I write the brief, set the rules and review what comes back. <a href="#ai" data-goto="ai">Here is how.</a></li>
+                <li><b>I get a lot out of AI without handing it the wheel.</b> I write the brief, decide the architecture with it, set the rules and review what comes back. <a href="#ai" data-goto="ai">Here is how.</a></li>
                 <li><b>I had responsibility before I had a keyboard.</b> Representative for 140 conscripts in the Army Medical Battalion, then night shifts in a dementia unit, where staying calm is the job.</li>
             </ul>
 
@@ -200,9 +200,10 @@
         <section id="ai" class="panel">
             <p class="kicker">Method</p>
             <h2>How I build with AI</h2>
-            <p class="lede">Most of the code in these apps was written by Claude. What to build, the constraints, the review standard and the running of it in production are mine. I think being open about that is more useful than pretending otherwise.</p>
+            <p class="lede">Most of the code in these apps was written by Claude. What to build, how it is put together, the review standard and the running of it in production are my calls. I think being open about that is more useful than pretending otherwise.</p>
             <ol class="steps">
                 <li><b>Brief before code.</b> Every project starts as a written brief. The model asks me questions first; my answers are recorded as decisions.</li>
+                <li><b>Architecture with the last word.</b> The model drafts a design, I push on it, and the structural choices are mine: what is its own app, what runs where, what talks to what.</li>
                 <li><b>Contracts between parts.</b> App and server agree on a documented API, so separate agents can build both sides in parallel.</li>
                 <li><b>Isolated agents, real review.</b> Each agent works in its own clone on a branch. Nothing merges before tests pass in a fresh clone and the risky code has been read.</li>
                 <li><b>Deterministic core.</b> Rules live in ordinary code with tests. Language models get narrow, checked jobs, and the apps keep working without them.</li>
