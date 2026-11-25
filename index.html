@@ -8,7 +8,7 @@
     <meta name="theme-color" content="#f3efe7">
     <link rel="icon" type="image/svg+xml" href="static/favicon.svg?v=3">
     <link rel="preload" href="static/fonts/Libron-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=10">
+    <link rel="stylesheet" href="style.css?v=11">
     <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -106,7 +106,9 @@
         <section id="sjekka" class="panel">
             <p class="kicker"><span class="live">live</span> Web app · public</p>
             <h2>sjekka</h2>
-            <p class="lede">Photograph a grocery receipt and it lands in a shared price database, so you can see what things really cost and where.</p>
+            <p class="whylabel">Why I built it</p>
+            <p class="lede">I am a student on a tight budget, and I wanted to compare my shopping lists across shops to find out where it is actually cheapest to shop.</p>
+            <p class="sub">Photograph a grocery receipt and it lands in a shared price database, so you can see what things really cost and where.</p>
             <a class="browser" href="https://sjekka.tischbein.dev" aria-label="Open the live sjekka demo">
                 <span class="chrome">sjekka.tischbein.dev <span class="arrow">↗</span></span>
                 <video muted loop playsinline preload="none" poster="static/sjekka/poster.jpg?v=2" aria-hidden="true">
@@ -132,29 +134,34 @@
         <section id="stud" class="panel">
             <p class="kicker"><span class="live">in daily use</span> Web + Android · private</p>
             <h2>stud</h2>
-            <p class="lede">My exam preparation in one place: a mirror of my course material, a daily study session, and short audiobook chapters with a quiz after each one.</p>
+            <p class="whylabel">Why I built it</p>
+            <p class="lede">Every lecturer uses Canvas differently, and none of it is organised the same way. I wanted every course in the same shape, without hunting for files and deadlines.</p>
+            <p class="sub">stud fetches everything from my Canvas courses every hour, keeps a copy of the files and sorts it all into the same folders for every course. On top of that it builds one deadline timeline, a daily study session, and short audiobook chapters with a quiz after each.</p>
             <div class="shots">
                 <figure><img src="static/shots/stud-today.webp" width="480" height="1068" loading="lazy" alt="stud's Today screen with the day's study session"><figcaption>Today's session</figcaption></figure>
                 <figure><img src="static/shots/stud-chapter.webp" width="480" height="1068" loading="lazy" alt="An audiobook chapter playing, with its learning goals"><figcaption>A five-minute chapter</figcaption></figure>
                 <figure><img src="static/shots/stud-quiz.webp" width="480" height="1068" loading="lazy" alt="A three-question quiz after the chapter"><figcaption>Quiz on what you heard</figcaption></figure>
             </div>
-            <p class="note">Screens show made-up demo courses. The real app sits behind Cloudflare Access.</p>
-            <ol class="flow" style="--n:5" aria-label="How an audiobook chapter is made">
-                <li><b>Topic</b><span>from the exam list</span></li><li><b>Script</b><span>Claude writes it for the ear</span></li><li><b>Check</b><span>automatic, rewrite on fail</span></li><li><b>Voice</b><span>rendered on my server</span></li><li><b>Phone</b><span>offline, then a quiz</span></li>
+            <p class="note">Screens show the Android app with made-up demo courses. The real app sits behind Cloudflare Access.</p>
+            <ol class="flow" style="--n:5" aria-label="How course material flows through stud">
+                <li><b>Canvas</b><span>every course, hourly, read-only</span></li><li><b>Mirror</b><span>files kept, hidden ones too</span></li><li><b>Sort</b><span>rules first, Claude for the rest</span></li><li><b>Study</b><span>daily session, cards, mock exams</span></li><li><b>Listen</b><span>spoken chapters, then a quiz</span></li>
             </ol>
             <ul class="points">
-                <li>Chapters are only written about ten ahead of where I am, and a monthly budget cap stops the spend.</li>
-                <li>Course material is also served to Claude through a read-only MCP server, so I can ask about my own syllabus.</li>
-                <li>The Android app works offline and queues what I do until there is a connection.</li>
+                <li>Automatic retrieval from Canvas: assignments, modules, files, pages and announcements. It finds files a lecturer tucked away inside modules or page links, and keeps its copy when something is removed.</li>
+                <li>Deadlines that only exist as a sentence in an announcement are picked out by Claude and added to the timeline, marked as inferred with the sentence they came from.</li>
+                <li>Sorting and syncing carry on with rules alone when Claude is unavailable, and a monthly budget cap stops the spend.</li>
+                <li>The same material is served to Claude through a read-only MCP server, and the Android app works offline.</li>
             </ul>
-            <ul class="tags"><li>FastAPI</li><li>SQLAlchemy</li><li>Claude API</li><li>MCP</li><li>Kotlin</li><li>Media3</li><li>Cloudflare Access</li></ul>
+            <ul class="tags"><li>Canvas API</li><li>FastAPI</li><li>SQLAlchemy</li><li>Claude API</li><li>MCP</li><li>Kotlin</li><li>Media3</li><li>Cloudflare Access</li></ul>
             <p class="built">Built with Claude Code. <a href="#ai" data-goto="ai">How I work with it</a></p>
         </section>
 
         <section id="alfred" class="panel">
             <p class="kicker"><span class="live">in daily use</span> Android + backend · private</p>
             <h2>alfred</h2>
-            <p class="lede">A personal boss. Alfred plans my week around exams, work and training, taps me on the shoulder when a block starts, and keeps my news feed locked until the day's work is done.</p>
+            <p class="whylabel">Why I built it</p>
+            <p class="lede">I wanted less to think about. Deciding what to do next costs energy I would rather spend doing it, so I built something that lets me just get to work on what needs to be done.</p>
+            <p class="sub">A personal boss. Alfred plans my week around exams, work and training, taps me on the shoulder when a block starts, and keeps my news feed locked until the day's work is done.</p>
             <div class="shots">
                 <figure><img src="static/shots/alfred-today.webp" width="480" height="1068" loading="lazy" alt="Alfred's Today screen with a study block in progress"><figcaption>Today</figcaption></figure>
                 <figure><img src="static/shots/alfred-week.webp" width="480" height="1068" loading="lazy" alt="The planned week as a calendar"><figcaption>The planned week</figcaption></figure>
@@ -176,7 +183,9 @@
         <section id="pulse" class="panel">
             <p class="kicker"><span class="live">in use</span> Android + backend · open source</p>
             <h2>pulse</h2>
-            <p class="lede">An interval coach for a Polar H10 chest strap. It reads my heart rate live, tells me by voice when I drift out of the target zone, and shows whether I am getting fitter.</p>
+            <p class="whylabel">Why I built it</p>
+            <p class="lede">I found the official apps less intuitive than they should be, and some of the features I wanted sit behind a paywall. So I built the coach I wanted.</p>
+            <p class="sub">An interval coach for a Polar H10 chest strap. It reads my heart rate live, tells me by voice when I drift out of the target zone, and shows whether I am getting fitter.</p>
             <div class="shots">
                 <figure><img src="static/shots/pulse-live.webp" width="480" height="1068" loading="lazy" alt="Live heart rate of 181 inside the target zone during an interval"><figcaption>Live, in zone</figcaption></figure>
                 <figure><img src="static/shots/pulse-summary.webp" width="480" height="1068" loading="lazy" alt="Summary of a 4x4 interval session with a heart-rate chart"><figcaption>After a 4×4 session</figcaption></figure>

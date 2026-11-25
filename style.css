@@ -157,6 +157,7 @@ html:not(.js) .panel + .panel { margin-top: 80px; padding-top: 48px; border-top:
   font-size: 13px;
   font-weight: 700;
 }
+.panel h2 { margin-bottom: 18px !important; }
 .panel h1, .panel h2 {
   margin: 0 0 14px;
   font-size: clamp(38px, 5vw, 56px);
@@ -176,7 +177,16 @@ html:not(.js) .panel + .panel { margin-top: 80px; padding-top: 48px; border-top:
   color: var(--soft);
 }
 .lede:has(+ .sub) { margin-bottom: 12px; }
-.sub { max-width: 38em; margin: 0 0 4px; color: var(--soft); }
+.sub { max-width: 38em; margin: 0 0 24px; color: var(--soft); }
+#about .sub { margin-bottom: 4px; }
+.whylabel {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--accent) 80%, var(--text));
+}
 .panel h3.first { margin-top: 26px; }
 .lede {
   max-width: 36em;
