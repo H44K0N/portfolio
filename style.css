@@ -416,6 +416,10 @@ footer {
   .article .split { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 600px) {
+  .tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); overflow: visible; }
+  .tabs .sep { display: none; }
+  .tabs a { min-width: 0; padding: 10px 4px 8px; font-size: 14px; line-height: 1.2; white-space: normal; text-align: center; }
+  .tabs svg { width: 26px; height: 26px; }
   .flow li { padding-right: 8px; }
   .flow b { font-size: 14px; }
   .flow span { font-size: 12px; }

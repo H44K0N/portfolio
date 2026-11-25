@@ -99,7 +99,6 @@
 precision highp float;
 uniform vec2 uRes;
 uniform float uTime, uA, uB, uMix, uSpin;
-uniform vec2 uPtr;
 uniform vec3 uColA, uColB;
 
 mat2 rot(float a){ float c=cos(a), s=sin(a); return mat2(c,-s,s,c); }
@@ -181,8 +180,8 @@ vec3 albedo(vec3 p, float id, vec3 acc){
 }
 
 vec3 toLocal(vec3 p){
-  p.yz=rot(-0.3+0.08*sin(uTime*0.37)-uPtr.y*0.35)*p.yz;
-  p.xz=rot(0.45+0.4*sin(uTime*0.5)+uPtr.x*0.6+uSpin)*p.xz;
+  p.yz=rot(-0.3+0.1*sin(uTime*0.37))*p.yz;
+  p.xz=rot(0.4+0.5*sin(uTime*0.5)+uSpin)*p.xz;
   return p;
 }
 float map(vec3 p){
@@ -296,9 +295,9 @@ void main(){
     gl.enableVertexAttribArray(0);
     gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
     const U = {};
-    for (const n of ["uRes", "uTime", "uA", "uB", "uMix", "uSpin", "uPtr", "uColA", "uColB"]) U[n] = gl.getUniformLocation(prog, n);
+    for (const n of ["uRes", "uTime", "uA", "uB", "uMix", "uSpin", "uColA", "uColB"]) U[n] = gl.getUniformLocation(prog, n);
 
-    const st = { a: 5, b: 5, mix: 1, colA: hexToRgb(ACCENT.about), colB: hexToRgb(ACCENT.about), start: 0, ptr: [0, 0], ptrT: [0, 0] };
+    const st = { a: 5, b: 5, mix: 1, colA: hexToRgb(ACCENT.about), colB: hexToRgb(ACCENT.about), start: 0 };
     let scale = Math.min(devicePixelRatio || 1, 2);
     let visible = true, raf = 0, slow = 0, frames = 0, last = 0;
     const DUR = 620;
@@ -313,15 +312,12 @@ void main(){
       resize();
       const k = Math.min(1, (now - st.start) / DUR);
       st.mix = k * k * (3 - 2 * k);
-      st.ptr[0] += (st.ptrT[0] - st.ptr[0]) * 0.08;
-      st.ptr[1] += (st.ptrT[1] - st.ptr[1]) * 0.08;
       gl.uniform2f(U.uRes, canvas.width, canvas.height);
       gl.uniform1f(U.uTime, reduced ? 2.0 : now / 1000);
       gl.uniform1f(U.uA, st.a);
       gl.uniform1f(U.uB, st.b);
       gl.uniform1f(U.uMix, st.mix);
       gl.uniform1f(U.uSpin, reduced ? 0 : (1 - st.mix) * -3.1416);
-      gl.uniform2f(U.uPtr, st.ptr[0], st.ptr[1]);
       gl.uniform3fv(U.uColA, st.colA);
       gl.uniform3fv(U.uColB, st.colB);
       gl.clearColor(0, 0, 0, 0);
@@ -344,13 +340,6 @@ void main(){
     new IntersectionObserver(([e]) => { visible = e.isIntersecting; last = 0; schedule(); }).observe(canvas);
     document.addEventListener("visibilitychange", () => { last = 0; schedule(); });
     addEventListener("resize", schedule);
-    addEventListener("pointermove", (e) => {
-      if (e.pointerType !== "mouse") return;
-      const r = canvas.getBoundingClientRect();
-      st.ptrT[0] = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / innerWidth * 2));
-      st.ptrT[1] = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / innerHeight * 2));
-      if (reduced) schedule();
-    }, { passive: true });
     canvas.addEventListener("webglcontextlost", (e) => { e.preventDefault(); canvas.closest(".object").classList.add("no-gl"); });
 
     return {
