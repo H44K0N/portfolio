@@ -8,7 +8,7 @@
     <meta name="theme-color" content="#f3efe7">
     <link rel="icon" type="image/svg+xml" href="static/favicon.svg?v=3">
     <link rel="preload" href="static/fonts/Libron-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=11">
+    <link rel="stylesheet" href="style.css?v=12">
     <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -137,12 +137,16 @@
             <p class="whylabel">Why I built it</p>
             <p class="lede">Every lecturer uses Canvas differently, and none of it is organised the same way. I wanted every course in the same shape, without hunting for files and deadlines.</p>
             <p class="sub">stud fetches everything from my Canvas courses every hour, keeps a copy of the files and sorts it all into the same folders for every course. On top of that it builds one deadline timeline, a daily study session, and short audiobook chapters with a quiz after each.</p>
+            <div class="webshots">
+                <figure><div class="browser"><span class="chrome">stud · courses and deadlines</span><img src="static/shots/stud-web-home.webp" width="1380" height="900" loading="lazy" alt="stud's front page: three courses and one timeline of upcoming deadlines"></div><figcaption>Every course, one deadline timeline</figcaption></figure>
+                <figure><div class="browser"><span class="chrome">stud · one course</span><img src="static/shots/stud-web-course.webp" width="1380" height="630" loading="lazy" alt="A course page with the same folders as every other course: lectures, assignments, exercises, exams, readings"></div><figcaption>The same folders for every course</figcaption></figure>
+            </div>
             <div class="shots">
                 <figure><img src="static/shots/stud-today.webp" width="480" height="1068" loading="lazy" alt="stud's Today screen with the day's study session"><figcaption>Today's session</figcaption></figure>
                 <figure><img src="static/shots/stud-chapter.webp" width="480" height="1068" loading="lazy" alt="An audiobook chapter playing, with its learning goals"><figcaption>A five-minute chapter</figcaption></figure>
                 <figure><img src="static/shots/stud-quiz.webp" width="480" height="1068" loading="lazy" alt="A three-question quiz after the chapter"><figcaption>Quiz on what you heard</figcaption></figure>
             </div>
-            <p class="note">Screens show the Android app with made-up demo courses. The real app sits behind Cloudflare Access.</p>
+            <p class="note">Screens show the web app and the Android app with made-up demo courses. The real app sits behind Cloudflare Access.</p>
             <ol class="flow" style="--n:5" aria-label="How course material flows through stud">
                 <li><b>Canvas</b><span>every course, hourly, read-only</span></li><li><b>Mirror</b><span>files kept, hidden ones too</span></li><li><b>Sort</b><span>rules first, Claude for the rest</span></li><li><b>Study</b><span>daily session, cards, mock exams</span></li><li><b>Listen</b><span>spoken chapters, then a quiz</span></li>
             </ol>

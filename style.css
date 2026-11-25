@@ -216,6 +216,17 @@ html:not(.js) .panel + .panel { margin-top: 80px; padding-top: 48px; border-top:
 .shots figcaption { margin-top: 10px; font-size: 14px; color: var(--soft); text-align: center; }
 .note { margin: 0 0 26px; font-size: 14px; color: var(--soft); }
 
+.webshots {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  margin: 0 0 22px;
+}
+.webshots figure { margin: 0; }
+.webshots .browser { margin: 0; }
+.webshots img { display: block; width: 100%; height: auto; }
+.webshots figcaption { margin-top: 10px; font-size: 14px; color: var(--soft); text-align: center; }
+
 /* browser frame for the sjekka recording */
 .browser {
   display: block;
