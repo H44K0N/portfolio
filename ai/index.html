@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="--accent:#7a5cd6">
+<html lang="en" style="--accent:#d97757">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
     <meta name="theme-color" content="#f3efe7">
     <link rel="icon" type="image/svg+xml" href="../static/favicon.svg?v=3">
     <link rel="preload" href="../static/fonts/Libron-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="../style.css?v=6">
+    <link rel="stylesheet" href="../style.css?v=7">
 </head>
 <body>
     <header class="top">
@@ -49,9 +49,9 @@
 
         <h2>The loop</h2>
         <p>Every feature goes through the same steps, whether it takes an evening or a week.</p>
-        <ol class="flow loop" aria-label="The steps a feature goes through">
-            <li>Brief</li><li>Questions and decisions</li><li>Contract</li><li>Agents build in parallel</li><li>Review in a fresh clone</li><li>CI deploy</li><li>I use it</li>
-        </ol>
+        <ol class="flow loop" style="--n:7" aria-label="The steps a feature goes through">
+                <li><b>Brief</b><span>written first</span></li><li><b>Decisions</b><span>my answers</span></li><li><b>Contract</b><span>API agreed</span></li><li><b>Build</b><span>parallel agents</span></li><li><b>Review</b><span>fresh clone</span></li><li><b>Deploy</b><span>CI, rollback</span></li><li><b>Use</b><span>by me, daily</span></li>
+            </ol>
 
         <h2>The techniques that make it reliable</h2>
         <div class="tech">

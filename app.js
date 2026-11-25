@@ -9,7 +9,7 @@
     stud: "#3f6fb5",
     alfred: "#e2a019",
     pulse: "#e5533c",
-    ai: "#7a5cd6",
+    ai: "#d97757",
     about: "#2b2926",
   };
 
@@ -112,13 +112,6 @@ float sdHeart(vec2 p){
   return sqrt(min(dot2(p-vec2(0.0,1.0)), dot2(p-0.5*max(p.x+p.y,0.0))))*sign(p.x-p.y);
 }
 float beat(){ float t=uTime*2.2; return pow(0.5+0.5*sin(t),8.0)+0.5*pow(0.5+0.5*sin(t-0.9),8.0); }
-vec3 orb(float i){
-  float a=uTime*0.9+i*1.5708;
-  vec3 p=vec3(cos(a),0.0,sin(a))*0.78;
-  p.xy=rot(0.6+i*0.9)*p.xy;
-  return p;
-}
-
 // receipt, book, bow tie, heart, orbiting cluster, letter H
 float shape(vec3 p, float id){
   if(id<0.5){
@@ -147,9 +140,16 @@ float shape(vec3 p, float id){
     return (length(vec2(max(d2+0.27,0.0),p.z))-0.27)*0.9;
   }
   if(id<4.5){
-    float d=length(p)-0.42;
-    for(int i=0;i<4;i++){ d=smin(d,length(p-orb(float(i)))-0.16,0.16); }
-    return d;
+    // a hand-cut starburst: uneven rays around a small core
+    float n=11.0, sec=6.2832/n;
+    float ang=atan(p.y,p.x)+0.15*sin(uTime*0.6);
+    float idx=floor(ang/sec+0.5);
+    vec2 q=rot(idx*sec)*(length(p.xy)*vec2(cos(ang),sin(ang)));
+    float len=0.62+0.34*fract(sin(idx*91.7)*43758.5453);
+    len*=1.0+0.05*sin(uTime*1.7+idx*2.1);
+    float h=clamp((q.x-0.1)/(len-0.1),0.0,1.0);
+    float ray=length(vec3(q.x-mix(0.1,len,h),q.y,p.z))-mix(0.1,0.065,h);
+    return smin(ray,length(p)-0.2,0.08)*0.8;
   }
   float legs=sdBox(vec3(abs(p.x)-0.42,p.y,p.z),vec3(0.13,0.72,0.13));
   float bar=sdBox(p,vec3(0.42,0.12,0.13));
@@ -176,7 +176,7 @@ vec3 albedo(vec3 p, float id, vec3 acc){
   }
   if(id<2.5){ return acc*mix(0.72,1.0,smoothstep(0.1,0.28,abs(p.x))); }
   if(id<3.5){ return acc; }
-  if(id<4.5){ return mix(vec3(0.17,0.16,0.19),acc,smoothstep(0.4,0.56,length(p))); }
+  if(id<4.5){ return acc; }
   return acc;
 }
 

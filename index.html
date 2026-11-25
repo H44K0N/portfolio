@@ -8,7 +8,7 @@
     <meta name="theme-color" content="#f3efe7">
     <link rel="icon" type="image/svg+xml" href="static/favicon.svg?v=3">
     <link rel="preload" href="static/fonts/Libron-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=6">
+    <link rel="stylesheet" href="style.css?v=7">
     <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -36,7 +36,7 @@
         </a>
         <i class="sep" aria-hidden="true"></i>
         <a href="#ai" data-panel="ai">
-            <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="4.500"/><circle cx="6" cy="9" r="2"/><circle cx="26" cy="9" r="2"/><circle cx="8" cy="26" r="2"/><circle cx="25" cy="24" r="2"/><path d="M7.700 10.200 12.300 13.400M24.300 10.200 19.700 13.400M9.200 24.400 13 19.400M23.500 22.600 19.500 18.900"/></svg>
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path stroke-width="2.2" d="M16.0 13.0L16.0 5.0M17.6 13.5L20.6 8.8M18.7 14.8L25.6 11.6M19.0 16.4L24.9 17.3M18.3 18.0L24.3 23.2M16.8 18.9L18.3 23.7M15.2 18.9L13.2 25.6M13.7 18.0L8.8 22.2M13.0 16.4L5.1 17.6M13.3 14.8L8.3 12.5M14.4 13.5L10.6 7.6"/></svg>
             <span>how I build with AI</span>
         </a>
         <a href="#about" data-panel="about">
@@ -63,8 +63,8 @@
                     <source data-src="static/sjekka/preview.mp4?v=2" type="video/mp4">
                 </video>
             </a>
-            <ol class="flow" aria-label="How a receipt is processed">
-                <li>Photo of receipt</li><li>Gemini reads it against a strict schema</li><li>Job queue in SQLite: retries, duplicates, unit prices</li><li>Shared price database</li>
+            <ol class="flow" style="--n:4" aria-label="How a receipt is processed">
+                <li><b>Photo</b><span>of a receipt</span></li><li><b>Read</b><span>Gemini, against a strict schema</span></li><li><b>Queue</b><span>retries, duplicates, unit prices</span></li><li><b>Prices</b><span>one shared database</span></li>
             </ol>
             <ul class="points">
                 <li>The model's answer has to fit a fixed schema, so a bad read is rejected and retried, never stored.</li>
@@ -88,8 +88,8 @@
                 <figure><img src="static/shots/stud-quiz.webp" width="480" height="1068" loading="lazy" alt="A three-question quiz after the chapter"><figcaption>Quiz on what you heard</figcaption></figure>
             </div>
             <p class="note">Screens show made-up demo courses. The real app sits behind Cloudflare Access.</p>
-            <ol class="flow" aria-label="How an audiobook chapter is made">
-                <li>Exam topic</li><li>Claude writes a script for listening</li><li>Automatic check, rewrite if it fails</li><li>Speech rendered on the server</li><li>Phone downloads it for offline</li>
+            <ol class="flow" style="--n:5" aria-label="How an audiobook chapter is made">
+                <li><b>Topic</b><span>from the exam list</span></li><li><b>Script</b><span>Claude writes it for the ear</span></li><li><b>Check</b><span>automatic, rewrite on fail</span></li><li><b>Voice</b><span>rendered on my server</span></li><li><b>Phone</b><span>offline, then a quiz</span></li>
             </ol>
             <ul class="points">
                 <li>Chapters are only written about ten ahead of where I am, and a monthly budget cap stops the spend.</li>
@@ -110,8 +110,8 @@
                 <figure><img src="static/shots/alfred-proof.webp" width="480" height="1068" loading="lazy" alt="Three quick questions to prove a study block was done"><figcaption>Proof before a block counts</figcaption></figure>
             </div>
             <p class="note">Screens are rendered from demo data.</p>
-            <ol class="flow" aria-label="How Alfred is put together">
-                <li>State in a database</li><li>Planning rules as plain code</li><li>Narrow LLM jobs on top: intake, briefing, quizzes</li><li>Phone caches the plan and sets its own alarms</li>
+            <ol class="flow" style="--n:4" aria-label="How Alfred is put together">
+                <li><b>State</b><span>one database</span></li><li><b>Rules</b><span>planning as plain code</span></li><li><b>LLM jobs</b><span>intake, briefing, quizzes</span></li><li><b>Phone</b><span>cached plan, its own alarms</span></li>
             </ol>
             <ul class="points">
                 <li>Everything works with the language model switched off. The model improves the wording and reads free text; it never owns the plan.</li>
@@ -132,8 +132,8 @@
                 <figure><img src="static/shots/pulse-progress.webp" width="480" height="1068" loading="lazy" alt="Progress over the last weeks: sessions, time in zone, recovery trend"><figcaption>Progress over weeks</figcaption></figure>
             </div>
             <p class="note">Screens are rendered from simulated sessions.</p>
-            <ol class="flow" aria-label="How a session flows through pulse">
-                <li>Polar H10 over Bluetooth</li><li>Coaching engine, pure Kotlin, tested against simulated runs</li><li>Voice cues + live screen</li><li>Session synced to my server</li>
+            <ol class="flow" style="--n:4" aria-label="How a session flows through pulse">
+                <li><b>Strap</b><span>Polar H10 over Bluetooth</span></li><li><b>Engine</b><span>pure Kotlin, tested on simulated runs</span></li><li><b>Coach</b><span>voice cues and live screen</span></li><li><b>Sync</b><span>to my server</span></li>
             </ol>
             <ul class="points">
                 <li>The coaching logic is separate from Android, so whole workouts can be replayed in tests without a strap or a phone.</li>
@@ -217,6 +217,6 @@
         <span>Hosted on my own server · set in Libron</span>
     </footer>
 
-    <script src="app.js?v=5" defer></script>
+    <script src="app.js?v=6" defer></script>
 </body>
 </html>
