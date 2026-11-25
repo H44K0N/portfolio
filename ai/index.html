@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How I build with AI · Haakon Meyer Tischbein</title>
-    <meta name="description" content="Most of the code in my apps is written by Claude. This is the process I use to keep ownership of the result: briefs, contracts, isolated agents, review, and production discipline.">
+    <meta name="description" content="Claude wrote most of the code in my apps. This is how I work with it, what I decide myself, and what went wrong along the way.">
     <meta name="theme-color" content="#f3efe7">
     <link rel="icon" type="image/svg+xml" href="../static/favicon.svg?v=3">
     <link rel="preload" href="../static/fonts/Libron-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="../style.css?v=12">
+    <link rel="stylesheet" href="../style.css?v=13">
 </head>
 <body>
     <header class="top">
@@ -19,96 +19,97 @@
     <main class="article">
         <a class="back" href="../#ai">← Back to the projects</a>
         <h1>How I build with AI</h1>
-        <p class="lede">Most of the code in <a href="../#sjekka">sjekka</a>, <a href="../#stud">stud</a>, <a href="../#alfred">alfred</a> and <a href="../#pulse">pulse</a> was written by Claude, through Claude Code. I would rather say that plainly than let anyone assume I typed it all.</p>
-        <p>What I bring is the part that decides whether AI-written software is any good: knowing what I want, deciding how it should be put together, setting the rules it is built under, checking the result, and running it for real. This page describes that process.</p>
+        <p class="lede">Claude wrote most of the code in <a href="../#sjekka">sjekka</a>, <a href="../#stud">stud</a>, <a href="../#alfred">alfred</a> and <a href="../#pulse">pulse</a>. I use Claude Code for that. I'd rather say so than have anyone think I typed it all myself.</p>
+        <p>My part is everything around the code. I decide what I want and how it should be put together. I set the rules it gets built under, I check the result, and I run it for real afterwards. This page is about how I do that.</p>
 
         <h2>Who does what</h2>
         <div class="split">
             <div class="box">
-                <h3>Mine</h3>
+                <h3>Me</h3>
                 <ul>
                     <li>What gets built, and why</li>
-                    <li>Requirements and hard constraints: cost, privacy, what must work offline</li>
-                    <li>The shape of the architecture: what is its own app, what runs where, what talks to what</li>
-                    <li>The call whenever the design forks</li>
-                    <li>The standard a change has to meet before it ships</li>
-                    <li>Testing on the real phone, with the real chest strap, in real exam weeks</li>
-                    <li>The server, the domain and everything that runs on them</li>
+                    <li>The requirements and limits, like cost, privacy and what has to work offline</li>
+                    <li>The overall architecture: what should be its own app, what runs where, and what talks to what</li>
+                    <li>The decision when there are two ways to do something</li>
+                    <li>How good a change has to be before it ships</li>
+                    <li>Testing on my own phone, with the actual chest strap, during actual exam weeks</li>
+                    <li>The server, the domain and what runs on them</li>
                 </ul>
             </div>
             <div class="box">
-                <h3>Claude's</h3>
+                <h3>Claude</h3>
                 <ul>
-                    <li>Working out the detailed design inside that shape, and arguing back when it disagrees</li>
+                    <li>The detailed design, within the architecture we agreed on</li>
+                    <li>Telling me when it disagrees</li>
                     <li>Writing the code and the tests</li>
-                    <li>Reviewing other agents' work</li>
-                    <li>Routine operations on the server, inside rules I have set</li>
-                    <li>Asking me when something is mine to decide</li>
+                    <li>Reviewing what other agents have written</li>
+                    <li>Day-to-day work on the server, within rules I've set</li>
+                    <li>Asking me when a decision is mine to make</li>
                 </ul>
             </div>
         </div>
 
-        <h2>The loop</h2>
-        <p>Every feature goes through the same steps, whether it takes an evening or a week.</p>
+        <h2>The steps</h2>
+        <p>Every feature goes through the same steps. Some take an evening and some take a week.</p>
         <ol class="flow loop" style="--n:7" aria-label="The steps a feature goes through">
-                <li><b>Brief</b><span>written first</span></li><li><b>Decisions</b><span>my answers</span></li><li><b>Contract</b><span>API agreed</span></li><li><b>Build</b><span>parallel agents</span></li><li><b>Review</b><span>fresh clone</span></li><li><b>Deploy</b><span>CI, rollback</span></li><li><b>Use</b><span>by me, daily</span></li>
-            </ol>
+            <li><b>Brief</b><span>written first</span></li><li><b>Decisions</b><span>my answers</span></li><li><b>Contract</b><span>API agreed</span></li><li><b>Build</b><span>parallel agents</span></li><li><b>Review</b><span>fresh clone</span></li><li><b>Deploy</b><span>CI, rollback</span></li><li><b>Use</b><span>by me, daily</span></li>
+        </ol>
 
-        <h2>The techniques that make it reliable</h2>
+        <h2>What I do to make it reliable</h2>
         <div class="tech">
             <div>
-                <h3>Write the brief first</h3>
-                <p>Nothing starts from a one-line prompt. A project begins as a written brief: what it is for, what it must never do, what is undecided. The model has to ask me its open questions before it writes code, and my answers are recorded as decisions.</p>
-                <p class="ex">Example: for stud's audiobooks I set the rules up front. Free voices that run on my own server, about five minutes per chapter, written to be listened to, a quiz after each one.</p>
+                <h3>I write a brief first</h3>
+                <p>I don't start from a one-line prompt. Each project starts with a written brief that says what it's for, what it must never do, and what I haven't decided yet. Claude has to ask its questions before it writes any code, and my answers are saved as decisions.</p>
+                <p class="ex">For the audiobooks in stud, I set the rules before anything was built. Only free voices that run on my own server. About five minutes per chapter. Written for listening, with a quiz after each one.</p>
             </div>
             <div>
-                <h3>Decide the architecture together, and have the last word</h3>
-                <p>The model drafts a design and I push on it. The big structural choices are mine, and several of them overruled the first draft. The model fills in the detail and tells me when it thinks I am wrong; sometimes it is right.</p>
-                <p class="ex">Examples: my course material was going to be rebuilt as app screens, and I had it exposed as a read-only MCP server instead. stud and alfred are separate apps that read from each other because I did not want one large app. Alfred owns its own calendar with no outside integrations. Audiobook chapters are only written about ten ahead of where I am listening.</p>
+                <h3>We decide the architecture together, and I have the final say</h3>
+                <p>Claude suggests a design and I push back on it. The big choices are mine, and several times I've gone against the first suggestion. Claude works out the details and tells me when it thinks I'm wrong. Sometimes it's right.</p>
+                <p class="ex">A few of my calls: the plan was to rebuild my course material as screens in the app, and I asked for a read-only MCP server instead. I wanted stud and alfred as two separate apps that read from each other. Alfred has its own calendar and doesn't connect to outside services. Audiobook chapters are only written about ten ahead of where I'm listening.</p>
             </div>
             <div>
-                <h3>Put a contract between the parts</h3>
-                <p>The app and the server agree on a documented API before either is built. That lets one agent build the Android side while another builds the backend, and it gives the review something exact to check against.</p>
+                <h3>The app and the server agree on an API first</h3>
+                <p>The API is written down before either side is built. Then one agent can build the Android app while another builds the backend. It also gives the review something exact to compare against.</p>
             </div>
             <div>
-                <h3>One orchestrator, several workers, separate clones</h3>
-                <p>The strongest model plans and reviews. Cheaper models do the bulk of the writing. Each worker gets its own clone of the repository and its own branch, and its work comes back as a pull request, so two agents can never trample each other's files.</p>
+                <h3>One model plans, others write</h3>
+                <p>The strongest model does the planning and the reviewing. Cheaper models write most of the code. Each of them gets its own clone of the repository and its own branch, and hands the work back as a pull request. That keeps two agents from overwriting each other's files.</p>
             </div>
             <div>
-                <h3>Nothing merges unreviewed</h3>
-                <p>A pull request is checked out into a fresh clone and the tests are run there, not trusted from the agent's own report. Code that touches authentication or data is read line by line. Where it matters, the change is tried against a copy of real data first.</p>
-                <p class="ex">Example: a fresh-clone run caught tests that only failed between midnight in Oslo and midnight UTC.</p>
+                <h3>Everything is reviewed before it's merged</h3>
+                <p>The pull request is checked out in a fresh clone and the tests are run there. I don't go by what the agent says about its own tests. Code that deals with login or data is read line by line. If it matters enough, the change is tried on a copy of the real data first.</p>
+                <p class="ex">One fresh-clone run found tests that only failed between midnight in Oslo and midnight UTC.</p>
             </div>
             <div>
-                <h3>Keep the core deterministic</h3>
-                <p>Planning rules, schedules and scoring are ordinary code with ordinary tests. Language models get narrow jobs with typed inputs and outputs, and their answers are validated before anything is stored. Every app keeps working when the model is unreachable.</p>
-                <p class="ex">Example: sjekka rejects a receipt reading that does not fit its schema and retries it. Alfred was built to run with no model at all, and gained one afterwards.</p>
+                <h3>The important logic is normal code</h3>
+                <p>Planning, schedules and scoring are written as normal code with normal tests. The language model gets small jobs with a fixed input and output, and the answer is checked before it's saved. All the apps keep working when the model can't be reached.</p>
+                <p class="ex">sjekka throws out a receipt reading that doesn't fit the format and tries again. Alfred was first built with no model at all, and got one later.</p>
             </div>
             <div>
-                <h3>Check generated content automatically, and cap the cost</h3>
-                <p>Text written by a model for me to learn from goes through an automatic check and is rewritten if it fails. Spending has a monthly ceiling in code, and work is only generated a little ahead of where I actually am.</p>
+                <h3>Generated text is checked, and spending is capped</h3>
+                <p>When a model writes something I'm going to study from, it goes through an automatic check and gets rewritten if it fails. There is a monthly spending limit in the code. Content is only generated a little ahead of where I am, so I don't pay for chapters I never get to.</p>
             </div>
             <div>
-                <h3>Look at every screen before the phone does</h3>
-                <p>Each screen is rendered from fixed demo data into a contact sheet, including the dull states: offline, empty, error, sensor lost. I review the sheet, then install the build. The screenshots on this site come from those renders.</p>
+                <h3>I look at every screen before installing</h3>
+                <p>Every screen is rendered from fixed demo data and put on one big sheet. That includes the boring ones, like offline, empty, error and lost sensor. I go through the sheet before I install the build on my phone. The screenshots on this site come from those sheets.</p>
             </div>
             <div>
-                <h3>Write decisions down so they stick</h3>
-                <p>What I decide, and feedback I give on how the work should be done, is saved to a small memory that every new session reads. I do not answer the same question twice, and a correction made once stays made.</p>
+                <h3>Decisions are written down</h3>
+                <p>My decisions, and my feedback on how I want the work done, are saved in a small memory that each new session reads. It means I don't get asked the same thing twice, and I only have to correct something once.</p>
             </div>
             <div>
-                <h3>Treat production as production</h3>
-                <p>Deploys go through CI with a health check and automatic rollback. Containers run read-only with no extra privileges, nothing listens on a public port, and all traffic arrives through a Cloudflare tunnel. Private material is kept out of the repositories, and test data is a cleaned copy.</p>
+                <h3>Production is taken seriously</h3>
+                <p>Deploys go through CI with a health check, and roll back automatically if it fails. The containers are read-only and run without extra privileges. Nothing listens on a public port, and all traffic comes in through a Cloudflare tunnel. Private material stays out of the repositories, and the test data is a cleaned copy.</p>
             </div>
         </div>
 
-        <h2>What went wrong, and what I changed</h2>
-        <p><b>The first audiobook scripts all failed their own quality check.</b> Six out of six first drafts needed a rewrite, which nearly doubled the cost per chapter. The cause was in the rules, not the model: the outlines asked for too much and the checker contradicted the writing instructions. Fixing the rules fixed the drafts.</p>
-        <p><b>Long status reports were noise.</b> Agents are happy to report everything. I now ask for a few bullets of what changed and a numbered list of questions that need me, and nothing else.</p>
-        <p><b>An agent's "tests pass" is a claim, not a fact.</b> That is why the review runs them again somewhere clean.</p>
+        <h2>Things that went wrong</h2>
+        <p><b>The first audiobook scripts failed the quality check.</b> All six first drafts had to be rewritten, and that almost doubled the cost per chapter. It turned out the problem was in the rules. The outlines asked for too much, and the checker disagreed with the writing instructions. Once the rules were changed, the drafts started passing.</p>
+        <p><b>The status reports got too long.</b> An agent will tell you everything if you let it. Now I ask for a few bullets on what changed and a list of the questions I need to answer.</p>
+        <p><b>I stopped trusting "tests pass".</b> At least from the agent that wrote the code. The review runs the tests again in a clean clone.</p>
 
-        <h2>Why I work this way</h2>
-        <p>The tools will keep getting better at writing code. The parts that stay human are deciding what is worth building, noticing when the result is wrong, and being responsible for it once it is running. Those are the parts I practise.</p>
+        <h2>Why I work like this</h2>
+        <p>AI tools keep getting better at writing code, and I expect that to continue. Someone still has to decide what's worth building, notice when the result is wrong, and take responsibility once it's running. That's what I'm trying to get good at.</p>
         <p><a href="../#about">More about me, and how to reach me →</a></p>
     </main>
 
