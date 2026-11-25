@@ -8,7 +8,7 @@
     <meta name="theme-color" content="#f3efe7">
     <link rel="icon" type="image/svg+xml" href="static/favicon.svg?v=3">
     <link rel="preload" href="static/fonts/Libron-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=8">
+    <link rel="stylesheet" href="style.css?v=9">
     <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -18,6 +18,11 @@
     </header>
 
     <nav class="tabs" aria-label="Projects and pages">
+        <a href="#about" data-panel="about">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M9 6v20M23 6v20M9 16h14"/></svg>
+            <span>about me</span>
+        </a>
+        <i class="sep" aria-hidden="true"></i>
         <a href="#sjekka" data-panel="sjekka">
             <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M9 4h14v24l-3.5-2.5L16 28l-3.5-2.5L9 28z"/><path d="M13 10h6M13 14.5h6M13 19h3"/></svg>
             <span>sjekka</span>
@@ -39,10 +44,6 @@
             <svg viewBox="0 0 32 32" aria-hidden="true"><path stroke-width="2.2" d="M16.0 13.0L16.0 5.0M17.6 13.5L20.6 8.8M18.7 14.8L25.6 11.6M19.0 16.4L24.9 17.3M18.3 18.0L24.3 23.2M16.8 18.9L18.3 23.7M15.2 18.9L13.2 25.6M13.7 18.0L8.8 22.2M13.0 16.4L5.1 17.6M13.3 14.8L8.3 12.5M14.4 13.5L10.6 7.6"/></svg>
             <span>how I build with AI</span>
         </a>
-        <a href="#about" data-panel="about">
-            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M9 6v20M23 6v20M9 16h14"/></svg>
-            <span>about me</span>
-        </a>
     </nav>
 
     <main class="stage">
@@ -51,6 +52,56 @@
         </div>
 
         <div class="panels">
+
+        <section id="about" class="panel">
+            <p class="kicker">Oslo, Norway · graduating summer 2027</p>
+            <h1>Haakon Meyer Tischbein</h1>
+            <p class="lede">Most students graduate with coursework. I will graduate with four apps in production, a server I run myself, and a tested way of building with AI.</p>
+            <p class="sub">Final-year Applied Computer Technology student at OsloMet, looking for a full-time role in DevOps, platform or backend engineering from summer 2027.</p>
+
+            <h3 class="first">What sets me apart</h3>
+
+            <ul class="why">
+                <li><b>I run things in production.</b> Four of my own apps live on a server I am responsible for: CI deploys with health checks and rollback, locked-down containers behind a Cloudflare tunnel, backups and intrusion detection.</li>
+                <li><b>I finish things and then use them.</b> <a href="#stud" data-goto="stud">stud</a> got me through this autumn's exams, <a href="#alfred" data-goto="alfred">alfred</a> plans my days, <a href="#pulse" data-goto="pulse">pulse</a> coaches my runs, and <a href="#sjekka" data-goto="sjekka">sjekka</a> is open to anyone.</li>
+                <li><b>I get a lot out of AI without handing it the wheel.</b> I write the brief, set the rules and review what comes back. <a href="#ai" data-goto="ai">Here is how.</a></li>
+                <li><b>I had responsibility before I had a keyboard.</b> Representative for 140 conscripts in the Army Medical Battalion, then night shifts in a dementia unit, where staying calm is the job.</li>
+            </ul>
+
+            <div class="actions">
+                <button type="button" class="pill primary reveal" data-a="haa" data-b="meti" data-c="hotmail.com">Show email</button>
+                <a class="pill" href="https://github.com/H44K0N">GitHub <span class="arrow">↗</span></a>
+            </div>
+
+            <h3>Experience</h3>
+            <dl class="cv">
+                <div><dt>2026</dt><dd><b>Volunteer, IT group, Øyafestivalen.</b> Built the festival network on site: switches, antennas and a great deal of cabling.</dd></div>
+                <div><dt>2023 – now</dt><dd><b>On-call care assistant, Oslo Municipality.</b> Vinderenhjemmet nursing home, alongside my studies.</dd></div>
+                <div><dt>2023</dt><dd><b>Care assistant, Åmot Municipality.</b> Full-time in a dementia unit at Ryslingmoen, mostly night shifts.</dd></div>
+                <div><dt>2019 – 2020</dt><dd><b>Norwegian Armed Forces, Army Medical Battalion.</b> Full-time battalion representative for 140 conscripts and operations assistant at command headquarters. Promoted to Leading Private.</dd></div>
+                <div><dt>2017 – 2021</dt><dd><b>UCO Kjeller.</b> Assembling and maintaining modular buildings, full-time for six months in 2021 and in school holidays before that.</dd></div>
+            </dl>
+
+            <h3>Education</h3>
+            <dl class="cv">
+                <div><dt>2024 – 2027</dt><dd><b>BSc Applied Computer Technology, OsloMet.</b> Data Networks and Cloud Services, Operating Systems, Software Testing, Computer Security, Java programming, Interaction Design.</dd></div>
+            </dl>
+
+            <h3>Skills</h3>
+            <dl class="cv">
+                <div><dt>Infrastructure</dt><dd>Linux, Docker, Nginx, systemd, Cloudflare Tunnel and Access, GitHub Actions, cloud&#8209;init</dd></div>
+                <div><dt>Languages</dt><dd>Python, Java, Kotlin, C#, JavaScript, Bash, SQL</dd></div>
+                <div><dt>Frameworks</dt><dd>FastAPI, Spring Boot, ASP.NET Core, Jetpack Compose, React</dd></div>
+                <div><dt>Spoken</dt><dd>Norwegian, English</dd></div>
+            </dl>
+
+            <h3>Also built</h3>
+            <ul class="also">
+                <li><a href="https://github.com/H44K0N/dotfiles">dotfiles <span class="arrow">↗</span></a> One Hyprland setup across two machines, with tracked packages and app audio routed into screen shares.</li>
+                <li><a href="https://github.com/H44K0N/pi">pi <span class="arrow">↗</span></a> A headless Raspberry Pi set up with cloud-init: Docker services, a stats API and a watchdog that reboots if the tunnel stays down.</li>
+                <li><a href="https://github.com/H44K0N/kolllektiv">kolllektiv <span class="arrow">↗</span></a> Chore rotation for a shared flat. Ran on a tablet taped to the fridge.</li>
+            </ul>
+        </section>
 
         <section id="sjekka" class="panel">
             <p class="kicker"><span class="live">live</span> Web app · public</p>
@@ -160,53 +211,6 @@
             <div class="actions">
                 <a class="pill primary" href="ai/">Read the full write-up <span class="arrow">→</span></a>
             </div>
-        </section>
-
-        <section id="about" class="panel">
-            <p class="kicker">Oslo, Norway · graduating summer 2027</p>
-            <h1>Haakon Meyer Tischbein</h1>
-            <p class="lede">I am in the final year of a bachelor's in Applied Computer Technology at OsloMet, and I am looking for a full-time role in DevOps, platform or backend engineering from summer 2027.</p>
-
-            <ul class="why">
-                <li><b>I run things in production.</b> Four of my own apps live on a server I am responsible for: CI deploys with health checks and rollback, locked-down containers behind a Cloudflare tunnel, backups and intrusion detection.</li>
-                <li><b>I finish things and then use them.</b> <a href="#stud" data-goto="stud">stud</a> got me through this autumn's exams, <a href="#alfred" data-goto="alfred">alfred</a> plans my days, <a href="#pulse" data-goto="pulse">pulse</a> coaches my runs, and <a href="#sjekka" data-goto="sjekka">sjekka</a> is open to anyone.</li>
-                <li><b>I get a lot out of AI without handing it the wheel.</b> I write the brief, set the rules and review what comes back. <a href="#ai" data-goto="ai">Here is how.</a></li>
-                <li><b>I am used to responsibility.</b> Elected representative for 140 conscripts in the Army Medical Battalion, and night shifts in a dementia unit, where staying calm is the job.</li>
-            </ul>
-
-            <div class="actions">
-                <button type="button" class="pill primary reveal" data-a="haa" data-b="meti" data-c="hotmail.com">Show email</button>
-                <a class="pill" href="https://github.com/H44K0N">GitHub <span class="arrow">↗</span></a>
-            </div>
-
-            <h3>Experience</h3>
-            <dl class="cv">
-                <div><dt>2026</dt><dd><b>Volunteer, IT group, Øyafestivalen.</b> Built the festival network on site: switches, antennas and a great deal of cabling.</dd></div>
-                <div><dt>2023 – now</dt><dd><b>On-call care assistant, Oslo Municipality.</b> Vinderenhjemmet nursing home, alongside my studies.</dd></div>
-                <div><dt>2023</dt><dd><b>Care assistant, Åmot Municipality.</b> Full-time in a dementia unit at Ryslingmoen, mostly night shifts.</dd></div>
-                <div><dt>2019 – 2020</dt><dd><b>Norwegian Armed Forces, Army Medical Battalion.</b> Full-time battalion representative for 140 conscripts and operations assistant at command headquarters. Promoted to Leading Private.</dd></div>
-                <div><dt>2017 – 2021</dt><dd><b>UCO Kjeller.</b> Assembling and maintaining modular buildings, full-time for six months in 2021 and in school holidays before that.</dd></div>
-            </dl>
-
-            <h3>Education</h3>
-            <dl class="cv">
-                <div><dt>2024 – 2027</dt><dd><b>BSc Applied Computer Technology, OsloMet.</b> Data Networks and Cloud Services, Operating Systems, Software Testing, Computer Security, Java programming, Interaction Design.</dd></div>
-            </dl>
-
-            <h3>Skills</h3>
-            <dl class="cv">
-                <div><dt>Infrastructure</dt><dd>Linux, Docker, Nginx, systemd, Cloudflare Tunnel and Access, GitHub Actions, cloud&#8209;init</dd></div>
-                <div><dt>Languages</dt><dd>Python, Java, Kotlin, C#, JavaScript, Bash, SQL</dd></div>
-                <div><dt>Frameworks</dt><dd>FastAPI, Spring Boot, ASP.NET Core, Jetpack Compose, React</dd></div>
-                <div><dt>Spoken</dt><dd>Norwegian, English</dd></div>
-            </dl>
-
-            <h3>Also built</h3>
-            <ul class="also">
-                <li><a href="https://github.com/H44K0N/dotfiles">dotfiles <span class="arrow">↗</span></a> One Hyprland setup across two machines, with tracked packages and app audio routed into screen shares.</li>
-                <li><a href="https://github.com/H44K0N/pi">pi <span class="arrow">↗</span></a> A headless Raspberry Pi set up with cloud-init: Docker services, a stats API and a watchdog that reboots if the tunnel stays down.</li>
-                <li><a href="https://github.com/H44K0N/kolllektiv">kolllektiv <span class="arrow">↗</span></a> Chore rotation for a shared flat. Ran on a tablet taped to the fridge.</li>
-            </ul>
         </section>
 
         </div>

@@ -175,6 +175,9 @@ html:not(.js) .panel + .panel { margin-top: 80px; padding-top: 48px; border-top:
   text-transform: uppercase;
   color: var(--soft);
 }
+.lede:has(+ .sub) { margin-bottom: 12px; }
+.sub { max-width: 38em; margin: 0 0 4px; color: var(--soft); }
+.panel h3.first { margin-top: 26px; }
 .lede {
   max-width: 36em;
   margin: 0 0 26px;
